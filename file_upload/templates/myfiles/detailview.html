@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    {{ model }}
+    <br/>
+    {{ model.file_type }}
+    <br/>
+
+    <a href="{% url 'download'  model.id  %}">{{ model.file_name }}</a>
+
+    <br/>
+    {{ model.file_exist_child_folder }}
+</p>
+</body>
+</html>

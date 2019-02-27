@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="9px">
+    <thead>
+    <td>id</td>
+    <td>name</td>
+    <td>folder</td>
+    <td>describe</td>
+    <td>Update</td>
+    <td>Detail</td>
+    <td>Delete</td>
+    </thead>
+    {% for filetype in filetypes %}
+        <tr>
+            <td>{{ filetype.file_type_id }}</td>
+            <td>{{ filetype.file_type_name }}</td>
+            <td>{{ filetype.file_folder_name }}</td>
+            <td>{{ filetype.file_type_describe }}</td>
+            <td><a href="/file/filetype/update/{{ filetype.file_type_id }}/">Update</a></td>
+            <td><a href="/file/filetype/detail/{{ filetype.file_type_id }}/">Detail</a></td>
+            <td><a href="/file/filetype/delete/{{ filetype.file_type_id }}/">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'filetype_create' %}">新增类别</a>
+</body>
+</html>
