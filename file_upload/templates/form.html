@@ -1,0 +1,13 @@
+{% load widget_tweaks %}
+<div></div>
+{% for field in form %}
+    <label class="col-md-4 col-lg-2 clear col-form-label float-left" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <div class="col-md-8 col-lg-4 float-left">
+        {{ field|add_class:'form-control' }}
+    </div>
+    {% if field.errors %}
+        <div class="float-left text-danger alert alert-danger">
+            <label class="col-md-12 col-lg-6">{{ filed.errors }}</label>
+        </div>
+    {% endif %}
+{% endfor %}

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'file_upload.apps.FileUploadConfig',
+    'widget_tweaks',
     # 'file_upload',
 ]
 
@@ -116,5 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'file_upload/statics'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'Statics')
 
 UPLOAD_FILE_ROOT_DICTIONARY = 'E:/上传文件夹'

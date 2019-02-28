@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">提交</button>
-    <a href="{% url 'filetype_list' %}">返回</a>
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {% include 'form.html' %}
+        <button type="submit" class="btn btn-primary">提交</button>
+        <a href="{% url 'filetype_list' %}" class="btn btn-secondary">返回</a>
+    </form>
+{% endblock %}

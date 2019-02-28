@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<table border="9px">
-    <thead>
-    <td>type</td>
-    <td>name</td>
-    <td>file_exist_child_folder</td>
-    <td>Update</td>
-    <td>Detail</td>
-    <td>Delete</td>
-    </thead>
-    {% for myfile in MyFileses %}
-        <tr>
-            <td>{{ myfile.file_type }}</td>
-            <td>{{ myfile.file_name }}</td>
-            <td>{{ myfile.file_exist_child_folder }}</td>
-            <td><a href="/file/files/update/{{ myfile.id }}/">Update</a></td>
-            <td><a href="/file/files/detail/{{ myfile.id }}/">Detail</a></td>
-            <td><a href="/file/files/delete/{{ myfile.id }}/">Delete</a></td>
-        </tr>
-    {% endfor %}
-</table>
-<a href="{% url 'files_create' %}">新增File</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <a class="btn btn-outline-primary float-right" href="{% url 'files_create' %}">新增File</a>
+        </div>
+    </div>
+    <div style="width: 100%; overflow: scroll;">
+        <table class="table ">
+            <thead class="thead-dark">
+            <td>type</td>
+            <td>name</td>
+            {#        <td>file_exist_child_folder</td>#}
+            <td>Update</td>
+            <td>Detail</td>
+            <td>Delete</td>
+            </thead>
+            <tbody>
+            {% for myfile in MyFileses %}
+                <tr>
+                    <td>{{ myfile.file_type }}</td>
+                    <td>{{ myfile.file_name }}</td>
+                    {#                <td>{{ myfile.file_exist_child_folder }}</td>#}
+                    <td><a href="/file/files/update/{{ myfile.id }}/">Update</a></td>
+                    <td><a href="/file/files/detail/{{ myfile.id }}/">Detail</a></td>
+                    <td><a href="/file/files/delete/{{ myfile.id }}/">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+.table td {
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.table th {
+    word-break: keep-all;
+    white-space: nowrap;
+}

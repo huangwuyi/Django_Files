@@ -127,6 +127,23 @@ class MyFilesDetailView(DetailView):
     context_object_name = 'model'
 
 
+class MyfilesDeleteView(DeleteView):
+    model = MyFiles
+    template_name = 'myfiles/deleteview.html'
+    context_object_name = 'model'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(self.object.file_name)
+        print(self.object.file_type)
+        print(self.object.file_exist_child_folder)
+        print(self.kwargs)
+        context['file_type'] = self.object.file_type
+        context['filename'] = self.object.file_name
+        context['file_exist_child_folder'] = self.object.file_exist_child_folder
+        return context
+
+
 def DownLoadFile(request, id):
     file = MyFiles.objects.get(id=id)
     filepath = os.path.join(settings.UPLOAD_FILE_ROOT_DICTIONARY, file.file_exist_child_folder, file.file_name)

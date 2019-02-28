@@ -16,7 +16,7 @@ class FileTypeForm(forms.ModelForm):
 
 
 class FileForm(forms.ModelForm):
-    file = forms.FileField()
+    file = forms.FileField(label='文件')
     success_url = reverse_lazy('files_list')
 
     class Meta:

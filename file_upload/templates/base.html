@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'selfcss/customer.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'jqueryUI/jquery-ui.css' %}"/>
+    <script type="text/javascript" src="{% static 'jqueryUI/external/jquery/jquery.js' %}"></script>
+    <script src="{% static 'jqueryUI/jquery-ui.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    {% block loadmorejs %}
+    {% endblock %}
+</head>
+<body class="container-fluid">
+{% block body %}
+    <div class="navbar navbar-dark bg-dark">
+        <div class="navbar-brand">DjangoFiles</div>
+        <div class="navbar-text">使用Django开发的文件管理系统</div>
+    </div>
+    <div class="container" style="margin-bottom: 60px;">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="card bg-dark" style="width: 100%;padding-bottom: 15px;">
+        <div class="card-header card-header-tabs text-center text-white font-weight-bold">This is footer</div>
+    </div>
+{% endblock %}
+</body>
+</html>
