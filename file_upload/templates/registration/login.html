@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'form.html' %}
+        <button class="btn btn-primary" type="submit">登录</button>
+        <a class="btn btn-secondary" href="{% url 'self-login' %}">注册</a>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="card bg-light">
+        <div class="card-header">Thanks</div>
+        <div class="card-body">
+            <h1>Thanks for browse Django Files!</h1>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'self-login' %}">重新登录</a>
+        </div>
+    </div>
+{% endblock %}

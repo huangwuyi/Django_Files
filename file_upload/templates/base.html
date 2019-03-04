@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>{% block title %}Default Title{% endblock %}</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'jqueryUI/jquery-ui.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'selfcss/customer.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'jqueryUI/jquery-ui.css' %}"/>
     <script type="text/javascript" src="{% static 'jqueryUI/external/jquery/jquery.js' %}"></script>
     <script src="{% static 'jqueryUI/jquery-ui.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
@@ -15,9 +15,46 @@
 </head>
 <body class="container-fluid">
 {% block body %}
-    <div class="navbar navbar-dark bg-dark">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="navbar-brand">DjangoFiles</div>
-        <div class="navbar-text">使用Django开发的文件管理系统</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'files_list' %}">Files <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'filetype_list' %}">FileType</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Author&System
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Author</a>
+                        <a class="dropdown-item" href="#">System</a>
+                    </div>
+                </li>
+                {#                <li class="nav-item">#}
+                {#                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>#}
+                {#                </li>#}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'self-logout' %}">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                    <label class="col-form-label text-white">欢迎你{{ user.name }}{{ user }}</label>
+                    <button class="btn btn-danger" type="submit">退出</button>
+                {% else %}
+                    <a href="{% url 'self-login'  %}?next=/file/files/list" class="btn btn-primary">点击登录</a>
+                {% endif %}
+            </form>
+            <div class="navbar-text">使用Django开发的文件管理系统</div>
+        </div>
     </div>
     <div class="container" style="margin-bottom: 60px;">
         {% block content %}

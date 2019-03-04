@@ -16,3 +16,14 @@ class MyFiles(models.Model):
     file_type = models.ForeignKey(to=FileType, on_delete=models.CASCADE,verbose_name='文件类型')
     file_name = models.CharField(max_length=500)
     file_exist_child_folder = models.CharField(max_length=500)
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=50)
+    describe = models.CharField(max_length=2000)
+
+
+class System(models.Model):
+    name = models.CharField(max_length=50)
+    primary_word = models.CharField(max_length=200)
+    describe = models.CharField(max_length=2000)
